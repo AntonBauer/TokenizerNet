@@ -2,6 +2,8 @@
 {
     public enum SymbolType
     {
+        Other,
+
         StartOfText,
         EndOfText,
 
@@ -9,6 +11,19 @@
         LineFinish,
         NewLine,
 
-        WSegSpace
+        WSegSpace,
+        Extend,
+        Double_Quote,
+        Single_Quote,
+        Hebrew_Letter,
+        Format,
+        Katakana,
+        ALetter,
+        MidLetter,
+        MidNum,
+        MidNumLet,
+        Numeric,
+        ExtendNumLet,
+        ZWJ
     }
 }

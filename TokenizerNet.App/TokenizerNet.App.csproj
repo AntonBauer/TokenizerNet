@@ -6,4 +6,8 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TokenizerNet.PropertiesFileParsers\TokenizerNet.PropertiesFileParsers.csproj" />
+  </ItemGroup>
+
 </Project>

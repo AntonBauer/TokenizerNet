@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using TokenizerNet.PropertiesFileParsers;
 
 namespace TokenizerNet.App
 {
@@ -6,7 +8,8 @@ namespace TokenizerNet.App
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var parser = new PropertiesParser();
+            var symbols = parser.Parse(@"c:\Development\Personal\TokenizerNet\Data\WordBreakProperty.txt").ToList();
         }
     }
 }
