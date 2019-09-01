@@ -3,19 +3,15 @@
     public enum SymbolType
     {
         Other,
-
         StartOfText,
         EndOfText,
-
         CarriageReturn,
         LineFinish,
-        NewLine,
-
         WSegSpace,
         Extend,
-        Double_Quote,
-        Single_Quote,
-        Hebrew_Letter,
+        DoubleQuote,
+        SingleQuote,
+        HebrewLetter,
         Format,
         Katakana,
         ALetter,
@@ -24,6 +20,7 @@
         MidNumLet,
         Numeric,
         ExtendNumLet,
-        ZWJ
+        ZWJ,
+        NewLine
     }
 }

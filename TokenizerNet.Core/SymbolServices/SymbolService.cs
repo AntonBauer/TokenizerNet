@@ -10,15 +10,10 @@ namespace TokenizerNet.Core.SymbolServices
     {
         public IEnumerable<Symbol> SplitToSymbols(string text, IList<Symbol> symbolLibrary)
         {
-            yield return Symbol.StartOfText;
-
             if (string.IsNullOrEmpty(text))
-            {
-                yield return Symbol.EndOfText;
                 yield break;
-            }
 
-            foreach (var pair in Encoding.UTF8.GetBytes(text).Window(2))
+            foreach (var pair in Encoding.UTF8.GetBytes(text).Batch(2))
                 yield return CreateSymbol(new CodeSpan(pair.ToArray()), symbolLibrary);
 
             yield return Symbol.EndOfText;

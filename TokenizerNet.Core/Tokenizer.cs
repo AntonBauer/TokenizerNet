@@ -20,32 +20,25 @@ namespace TokenizerNet.Core
             _symbolsLibrary = symbolsLibrary.ToList();
         }
 
-        public void TokenizeWords(string text)
+        public IEnumerable<int> FindWirdBoundaries(string text)
         {
             var textSymbols = _symbolService.SplitToSymbols(text, _symbolsLibrary);
-            var breaks = FindBreaks(textSymbols).ToList();
+            return FindBreaks(textSymbols);
         }
 
         private IEnumerable<int> FindBreaks(IEnumerable<Symbol> symbols)
         {
-            var pairedSymbols = symbols.Window(2).ToList();
+            var index = 1;
 
-            var pairsIndexes = new List<int>();
-            for (var i = 0; i < pairedSymbols.Count; i++)
+            foreach (var pair in symbols.Window(2))
             {
-                var pair = pairedSymbols[i];
-                foreach (var rule in _rules)
-                {
-                    var allowBreak = rule.AllowBreak(pair[0], pair[1]) ?? false;
-                    if (allowBreak)
-                    {
-                        pairsIndexes.Add(i);
-                        break;
-                    }
-                }
-            }
+                var allowBreak = _rules.Select(r => r.AllowBreak(pair[0], pair[1])).FirstOrDefault(r => r.HasValue);
 
-            return Enumerable.Empty<int>();
+                if (allowBreak.HasValue && allowBreak.Value)
+                    yield return index;
+
+                ++index;
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TokenizerNet.PropertiesFileParsers
+namespace TokenizerNet.Utils
 {
     public static class StringExtenstions
     {

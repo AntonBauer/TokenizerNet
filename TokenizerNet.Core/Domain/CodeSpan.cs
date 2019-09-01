@@ -1,4 +1,6 @@
-﻿namespace TokenizerNet.Core.Domain
+﻿using TokenizerNet.Utils;
+
+namespace TokenizerNet.Core.Domain
 {
     public struct CodeSpan
     {
@@ -16,7 +18,10 @@
 
         public bool Contains(CodeSpan span)
         {
-            return false;
+            var isStartLess = Start.IsLessThan(span.Start) || Start.IsEqualTo(span.Start);
+            var isEndGreater = End.IsGreaterThan(span.End) || End.IsEqualTo(span.End);
+
+            return isStartLess && isEndGreater;
         }
     }
 }

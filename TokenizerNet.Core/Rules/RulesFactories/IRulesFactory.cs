@@ -4,6 +4,6 @@ namespace TokenizerNet.Core.Rules.RulesFactories
 {
     public interface IRulesFactory
     {
-        IEnumerable<IBreakRule> GetWordBreakRules(string language);
+        IEnumerable<IBreakRule> GetWordBreakRules();
     }
 }

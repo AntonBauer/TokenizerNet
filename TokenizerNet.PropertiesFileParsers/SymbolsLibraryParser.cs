@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using TokenizerNet.Core.Domain;
+using TokenizerNet.Utils;
 
 namespace TokenizerNet.PropertiesFileParsers
 {
-    public class PropertiesParser
+    public class SymbolsLibraryParser
     {
         private const string CommentLine = "#";
 
@@ -41,11 +42,11 @@ namespace TokenizerNet.PropertiesFileParsers
             switch (symbolType)
             {
                 case "Double_Quote":
-                    return SymbolType.Double_Quote;
+                    return SymbolType.DoubleQuote;
                 case "Single_Quote":
-                    return SymbolType.Single_Quote;
+                    return SymbolType.SingleQuote;
                 case "Hebrew_Letter":
-                    return SymbolType.Hebrew_Letter;
+                    return SymbolType.HebrewLetter;
                 case "CR":
                     return SymbolType.CarriageReturn;
                 case "LF":
