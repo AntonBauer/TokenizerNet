@@ -7,12 +7,17 @@ namespace TokenizerNet.Core.Rules.RulesFactories
     {
         public IEnumerable<IBreakRule> GetWordBreakRules()
         {
-            //yield return new StartTextBreakRule();
-            //yield return new EndTextBreakRule();
             yield return new NewLineBreakRule();
             yield return new HorizontalSpaceBreakRule();
             yield return new IgnoreFormatBreakingRule();
             yield return new BetweenLettersBreakingRule();
+            yield return new AcrossPunctuationsBreakRule();
+            yield return new NumericBreakRule();
+            yield return new LetterNumberBreakRule();
+            yield return new NumberLetterBreakRule();
+            yield return new NumericSequencesBreakRule();
+            yield return new KatakanaBreakRule();
+            yield return new ExtendersBreakRule();
 
             yield return new FallbackBreakRule();
         }

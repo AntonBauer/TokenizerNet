@@ -28,13 +28,13 @@ namespace TokenizerNet.Core
 
         private IEnumerable<int> FindBreaks(IEnumerable<Symbol> symbols)
         {
-            var index = 1;
+            var index = 0;
 
             foreach (var pair in symbols.Window(2))
             {
                 var allowBreak = _rules.Select(r => r.AllowBreak(pair[0], pair[1])).FirstOrDefault(r => r.HasValue);
 
-                if (allowBreak.HasValue && allowBreak.Value)
+                if (!allowBreak.HasValue || allowBreak.Value)
                     yield return index;
 
                 ++index;

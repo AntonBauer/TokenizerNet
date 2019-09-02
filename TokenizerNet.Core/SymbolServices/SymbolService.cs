@@ -15,8 +15,6 @@ namespace TokenizerNet.Core.SymbolServices
 
             foreach (var pair in Encoding.UTF8.GetBytes(text).Batch(2))
                 yield return CreateSymbol(new CodeSpan(pair.ToArray()), symbolLibrary);
-
-            yield return Symbol.EndOfText;
         }
 
         private Symbol CreateSymbol(CodeSpan span, IList<Symbol> symbolsLibrary)
