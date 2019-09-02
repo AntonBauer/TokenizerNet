@@ -11,10 +11,12 @@ namespace TokenizerNet.Tests
         public void ContainsTest()
         {
             // Arrange
-            var first = new CodeSpan(new byte[] { 0, 41}, new byte[] { 0, 90 });
-            var second = new CodeSpan(new byte[] { 0, 84 });
-            var third = new CodeSpan(new byte[] { 5, 208 }, new byte[] { 5, 234 });
-            var fourth = new CodeSpan(new byte[] { 251, 29 });
+            var first = new CodeSpan(41, 90);
+            var second = new CodeSpan(84);
+            var third = new CodeSpan(1488, 1498);
+            var fourth = new CodeSpan(64285);
+
+            //fb1d
 
             // Act
             var result_1 = first.Contains(second);

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using TokenizerNet.Core.Domain;
-using TokenizerNet.Utils;
 
 namespace TokenizerNet.PropertiesFileParsers
 {
@@ -30,11 +29,9 @@ namespace TokenizerNet.PropertiesFileParsers
         private static CodeSpan ParseCodeSpan(string codeSpan)
         {
             var splitted = codeSpan.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
-
-            var startBytes = splitted[0].ConvertToByteArray();
-            var endBytes = splitted.Length == 2 ? splitted[1].ConvertToByteArray() : startBytes;
-
-            return new CodeSpan(startBytes, endBytes);
+            return splitted.Length == 2
+                ? new CodeSpan(Convert.ToInt32(splitted[0], 16), Convert.ToInt32(splitted[1], 16))
+                : new CodeSpan(Convert.ToInt32(splitted[0], 16));
         }
 
         private static SymbolType ParseType(string symbolType)

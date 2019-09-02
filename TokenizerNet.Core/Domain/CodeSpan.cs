@@ -1,27 +1,22 @@
-﻿using TokenizerNet.Utils;
-
-namespace TokenizerNet.Core.Domain
+﻿namespace TokenizerNet.Core.Domain
 {
     public struct CodeSpan
     {
-        public byte[] Start { get; }
+        public int Start { get; }
 
-        public byte[] End { get; }
+        public int End { get; }
 
-        public CodeSpan(byte[] start, byte[] end)
+        public CodeSpan(int start, int end)
         {
-            Start = start.Length == 1 ? new byte[] { 0, start[0]} : start;
-            End = end.Length == 1 ? new byte[] { 0, end[0] } : end;
+            // ToDo use int instead of byte[]
+            //var test = 0xff66;
+
+            Start = start;
+            End = end;
         }
 
-        public CodeSpan(byte[] single) : this(single, single) { }
+        public CodeSpan(int singlePosition) : this(singlePosition, singlePosition) { }
 
-        public bool Contains(CodeSpan span)
-        {
-            var isStartLess = Start.IsLessThan(span.Start) || Start.IsEqualTo(span.Start);
-            var isEndGreater = End.IsGreaterThan(span.End) || End.IsEqualTo(span.End);
-
-            return isStartLess && isEndGreater;
-        }
+        public bool Contains(CodeSpan span) => Start <= span.Start && End <= span.End;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MoreLinq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace TokenizerNet.Core.SymbolServices
         public IEnumerable<Symbol> SplitToSymbols(string text, IList<Symbol> symbolLibrary) =>
             string.IsNullOrEmpty(text)
                 ? Enumerable.Empty<Symbol>()
-                : Encoding.UTF8.GetBytes(text).Select(b => CreateSymbol(new CodeSpan(new[] { b }), symbolLibrary));
+                : Encoding.UTF8.GetBytes(text).Select(b => CreateSymbol(new CodeSpan(Convert.ToInt32(b)), symbolLibrary));
 
         private Symbol CreateSymbol(CodeSpan span, IList<Symbol> symbolsLibrary)
         {
