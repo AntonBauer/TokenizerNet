@@ -10,8 +10,8 @@ namespace TokenizerNet.Core.Domain
 
         public CodeSpan(byte[] start, byte[] end)
         {
-            Start = start;
-            End = end;
+            Start = start.Length == 1 ? new byte[] { 0, start[0]} : start;
+            End = end.Length == 1 ? new byte[] { 0, end[0] } : end;
         }
 
         public CodeSpan(byte[] single) : this(single, single) { }

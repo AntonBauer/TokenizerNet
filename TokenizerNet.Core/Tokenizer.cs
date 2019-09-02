@@ -28,7 +28,7 @@ namespace TokenizerNet.Core
 
         private IEnumerable<int> FindBreaks(IEnumerable<Symbol> symbols)
         {
-            var index = 0;
+            var index = 1;
 
             foreach (var pair in symbols.Window(2))
             {

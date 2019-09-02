@@ -11,10 +11,10 @@
                 return false;
 
             for(var i = 0; i < first.Length; i++)
-                if (first[i] > second[i])
-                    return true;
+                if (first[i] < second[i])
+                    return false;
 
-            return false;
+            return true;
         }
 
         public static bool IsLessThan(this byte[] first, byte[] second)
@@ -26,10 +26,10 @@
                 return true;
 
             for (var i = 0; i < first.Length; i++)
-                if (first[i] < second[i])
-                    return true;
+                if (first[i] > second[i])
+                    return false;
 
-            return false;
+            return true;
         }
 
         public static bool IsEqualTo(this byte[] first, byte[] second)

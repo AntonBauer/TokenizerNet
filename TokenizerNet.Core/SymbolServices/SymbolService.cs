@@ -8,14 +8,10 @@ namespace TokenizerNet.Core.SymbolServices
 {
     public sealed class SymbolService : ISymbolService
     {
-        public IEnumerable<Symbol> SplitToSymbols(string text, IList<Symbol> symbolLibrary)
-        {
-            if (string.IsNullOrEmpty(text))
-                yield break;
-
-            foreach (var pair in Encoding.UTF8.GetBytes(text).Batch(2))
-                yield return CreateSymbol(new CodeSpan(pair.ToArray()), symbolLibrary);
-        }
+        public IEnumerable<Symbol> SplitToSymbols(string text, IList<Symbol> symbolLibrary) =>
+            string.IsNullOrEmpty(text)
+                ? Enumerable.Empty<Symbol>()
+                : Encoding.UTF8.GetBytes(text).Select(b => CreateSymbol(new CodeSpan(new[] { b }), symbolLibrary));
 
         private Symbol CreateSymbol(CodeSpan span, IList<Symbol> symbolsLibrary)
         {
