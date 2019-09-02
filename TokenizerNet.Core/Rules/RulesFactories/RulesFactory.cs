@@ -7,6 +7,8 @@ namespace TokenizerNet.Core.Rules.RulesFactories
     {
         public IEnumerable<IBreakRule> GetWordBreakRules()
         {
+            // ToDo: add WB3c, WB15, WB16 rules
+
             yield return new NewLineBreakRule();
             yield return new HorizontalSpaceBreakRule();
             yield return new IgnoreFormatBreakingRule();

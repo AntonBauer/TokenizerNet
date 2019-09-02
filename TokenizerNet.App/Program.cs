@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using TokenizerNet.Core;
 using TokenizerNet.Core.Rules.RulesFactories;
 using TokenizerNet.Core.SymbolServices;
@@ -9,7 +8,7 @@ namespace TokenizerNet.App
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var exampleSentence = "The quick (\"brown\") fox can't jump 32.2 feet, right?";
 
@@ -18,7 +17,7 @@ namespace TokenizerNet.App
             var rules = new RulesFactory().GetWordBreakRules();
 
             var tokenizer = new Tokenizer(symbolService, symbolsLibrary, rules);
-            var breakIndexes = tokenizer.FindWirdBoundaries(exampleSentence).ToList();
+            var breakIndexes = tokenizer.FindBoundaries(exampleSentence);
 
             var words = new List<string>();
             var lastIndex = 0;

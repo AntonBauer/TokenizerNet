@@ -10,19 +10,19 @@ namespace TokenizerNet.Core
     public class Tokenizer
     {
         private readonly List<IBreakRule> _rules;
-        private readonly List<Symbol> _symbolsLibrary;
+        private readonly List<Symbol> _referenceSymbolsLibrary;
         private readonly ISymbolService _symbolService;
 
-        public Tokenizer(ISymbolService symbolService, IEnumerable<Symbol> symbolsLibrary, IEnumerable<IBreakRule> rules)
+        public Tokenizer(ISymbolService symbolService, IEnumerable<Symbol> referenceSymbolsLibrary, IEnumerable<IBreakRule> rules)
         {
             _symbolService = symbolService;
             _rules = rules.ToList();
-            _symbolsLibrary = symbolsLibrary.ToList();
+            _referenceSymbolsLibrary = referenceSymbolsLibrary.ToList();
         }
 
-        public IEnumerable<int> FindWirdBoundaries(string text)
+        public IEnumerable<int> FindBoundaries(string text)
         {
-            var textSymbols = _symbolService.SplitToSymbols(text, _symbolsLibrary);
+            var textSymbols = _symbolService.SplitToSymbols(text, _referenceSymbolsLibrary);
             return FindBreaks(textSymbols);
         }
 
