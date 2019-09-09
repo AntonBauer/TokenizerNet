@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TokenizerNet.Core;
+using TokenizerNet.Core.BreakEngines;
 using TokenizerNet.Core.Rules.RulesFactories;
 using TokenizerNet.Core.SymbolServices;
 using TokenizerNet.PropertiesFileParsers;
@@ -16,8 +16,8 @@ namespace TokenizerNet.App
             var symbolService = new SymbolService();
             var rules = new RulesFactory().GetWordBreakRules();
 
-            var tokenizer = new Tokenizer(symbolService, symbolsLibrary, rules);
-            var breakIndexes = tokenizer.FindBoundaries(exampleSentence);
+            var breakEngine = new RuleBasedBreakEngine(symbolService, symbolsLibrary, rules);
+            var breakIndexes = breakEngine.FindBoundaries(exampleSentence);
 
             var words = new List<string>();
             var lastIndex = 0;

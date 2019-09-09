@@ -5,15 +5,15 @@ using TokenizerNet.Core.Domain;
 using TokenizerNet.Core.Rules;
 using TokenizerNet.Core.SymbolServices;
 
-namespace TokenizerNet.Core
+namespace TokenizerNet.Core.BreakEngines
 {
-    public class Tokenizer
+    public sealed class RuleBasedBreakEngine : IBreakEngine
     {
         private readonly List<IBreakRule> _rules;
         private readonly List<Symbol> _referenceSymbolsLibrary;
         private readonly ISymbolService _symbolService;
 
-        public Tokenizer(ISymbolService symbolService, IEnumerable<Symbol> referenceSymbolsLibrary, IEnumerable<IBreakRule> rules)
+        public RuleBasedBreakEngine(ISymbolService symbolService, IEnumerable<Symbol> referenceSymbolsLibrary, IEnumerable<IBreakRule> rules)
         {
             _symbolService = symbolService;
             _rules = rules.ToList();
