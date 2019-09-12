@@ -7,11 +7,11 @@ using TokenizerNet.Core.Domain.Enums;
 
 namespace TokenizerNet.PropertiesFileParsers
 {
-    public class SymbolsLibraryParser
+    public static class SymbolsLibraryParser
     {
         private const string CommentLine = "#";
 
-        public IEnumerable<Symbol> Parse(string filePath)
+        public static IEnumerable<Symbol> Parse(string filePath)
         {
             foreach(var line in File.ReadAllLines(filePath).Where(IsDataLine))
             {
