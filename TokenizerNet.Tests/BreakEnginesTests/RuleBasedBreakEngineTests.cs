@@ -48,7 +48,7 @@ namespace TokenizerNet.Tests.BreakEnginesTests
         public static IEnumerable<TestCaseData> TestCases()
         {
             var sentence = "The quick (\"brown\") fox can't jump 32.2 feet, right?";
-            var words = new[] { "The", " ", "quick", "(", "\"", "brown", "\"", " ", "fox", " ", "can", "'", "t", " ", "jump", " ", "32.2", " ", "feet", ",", " ", "right", "?"};
+            var words = new[] { "The", " ", "quick", " ", "(", "\"", "brown", "\"", ")", " ", "fox", " ", "can", "'t", " ", "jump", " ", "32.2", " ", "feet", ",", " ", "right", "?"};
             yield return new TestCaseData(sentence, words).SetName("Brown fox");
         }
 

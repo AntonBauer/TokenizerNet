@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using TokenizerNet.Core.Domain;
 using TokenizerNet.Core.Domain.Enums;
+using TokenizerNet.Core.Properties;
+using TokenizerNet.Core.Utils;
 
 namespace TokenizerNet.Core.SymbolServices
 {
@@ -12,17 +14,8 @@ namespace TokenizerNet.Core.SymbolServices
     {
         public IList<Symbol> LoadSymbolLibrary(BreakType breakType)
         {
-            switch (breakType)
-            {
-                case BreakType.Word:
-                    return new List<Symbol>();
-
-                case BreakType.Sentence:
-                    return new List<Symbol>();
-
-                default:
-                    throw new ArgumentException($"Unknown break type: {breakType}", nameof(breakType));
-            }
+            var libraryFilePath = GetLibraryFileContent(breakType);
+            return SymbolsLibraryParser.ParseContent(libraryFilePath).ToList();
         }
 
         public IEnumerable<Symbol> SplitToSymbols(string text, IList<Symbol> symbolLibrary) =>
@@ -36,6 +29,21 @@ namespace TokenizerNet.Core.SymbolServices
             return libSymbol.Equals(default(Symbol))
                 ? new Symbol(span)
                 : new Symbol(span, libSymbol.Type, libSymbol.Name);
+        }
+
+        private string GetLibraryFileContent(BreakType breakType)
+        {
+            switch (breakType)
+            {
+                case BreakType.Word:
+                    return Resources.WordBreakProperty;
+
+                case BreakType.Sentence:
+                    return Resources.SentenceBreakProperty;
+
+                default:
+                    throw new ArgumentException($"Unknown break type: {breakType}", nameof(breakType));
+            }
         }
     }
 }
