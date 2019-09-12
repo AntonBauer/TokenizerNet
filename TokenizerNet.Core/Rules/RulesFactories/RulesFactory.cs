@@ -20,8 +20,6 @@ namespace TokenizerNet.Core.Rules.RulesFactories
             yield return new NumericSequencesBreakRule();
             yield return new KatakanaBreakRule();
             yield return new ExtendersBreakRule();
-
-            yield return new FallbackBreakRule();
         }
     }
 }

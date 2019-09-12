@@ -1,4 +1,4 @@
-﻿namespace TokenizerNet.Core.Domain
+﻿namespace TokenizerNet.Core.Domain.Enums
 {
     public enum SymbolType
     {

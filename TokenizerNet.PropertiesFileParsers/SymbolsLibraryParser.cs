@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using TokenizerNet.Core.Domain;
+using TokenizerNet.Core.Domain.Enums;
 
 namespace TokenizerNet.PropertiesFileParsers
 {

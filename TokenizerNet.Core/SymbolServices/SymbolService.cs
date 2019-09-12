@@ -4,11 +4,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TokenizerNet.Core.Domain;
+using TokenizerNet.Core.Domain.Enums;
 
 namespace TokenizerNet.Core.SymbolServices
 {
     public sealed class SymbolService : ISymbolService
     {
+        public IList<Symbol> LoadSymbolLibrary(BreakType breakType)
+        {
+            switch (breakType)
+            {
+                case BreakType.Word:
+                    return new List<Symbol>();
+
+                case BreakType.Sentence:
+                    return new List<Symbol>();
+
+                default:
+                    throw new ArgumentException($"Unknown break type: {breakType}", nameof(breakType));
+            }
+        }
+
         public IEnumerable<Symbol> SplitToSymbols(string text, IList<Symbol> symbolLibrary) =>
             string.IsNullOrEmpty(text)
                 ? Enumerable.Empty<Symbol>()

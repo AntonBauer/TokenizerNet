@@ -1,4 +1,5 @@
 ﻿using TokenizerNet.Core.Domain;
+using TokenizerNet.Core.Domain.Enums;
 
 namespace TokenizerNet.Core.Rules.WordBoundariesRules
 {
